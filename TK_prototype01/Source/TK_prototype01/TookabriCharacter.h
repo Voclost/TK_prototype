@@ -16,39 +16,38 @@ public:
 	ATookabriCharacter();
 
 	// Array of movement locations - 3 lanes to be placed in the level
-	UPROPERTY(EditAnywhere, Categorey = Logic)
+	UPROPERTY(EditAnywhere, Category = Logic)
 	TArray<class ATargetPoint*>TargetArray;
 
 	// Character lane swap speed
-	UPROPERTY(EditAnywhere, Categorey = Logic)
-	float speed;
+	UPROPERTY(EditAnywhere, Category = Logic)
+	float CharSpeed;
 
 	// Audio component for obstacle hit sound
-	UPROPERTY(EditAnywhere, Categorey = Sound)
+	UPROPERTY(EditAnywhere, Category = Sound)
 	UAudioComponent* hitObstacleSound;
 
 	// Audio component for coin pickup sound
-	UPROPERTY(EditAnywhere, Categorey = Sound)
+	UPROPERTY(EditAnywhere, Category = Sound)
 	UAudioComponent* dingSound;
 
 
 protected:
-	ATookabriCharacter();
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 	void ScoreUp();
 
 	// Will handle moving the target location of Tookabri left and right
-	void moveRight();
-	void moveLeft();
+	void MoveRight();
+	void MoveLeft();
 
 	// Overlap functions to be used upon capsule component collision
 	UFUNCTION()
-	void myOnComponentOverlap(AActor* otherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SwwepResult);
+	void myOnComponentOverlap(UPrimitiveComponent* ThisActor, AActor* otherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SwwepResult);
 
 	UFUNCTION()
-	void myOnComponentEndOverlap(AActor* otherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+	void myOnComponentEndOverlap(UPrimitiveComponent* ThisActor, AActor* otherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
 	// Camera Boom for maintaining camera distance to the player
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
