@@ -4,13 +4,6 @@
 #include "TK_prototype01.h"
 #include "Animation/AnimInstance.h"
 #include "Animation/AnimBlueprint.h"
-#include "Engine/TargetPoint.h"
-#include "TK_prototype01GameModeBase.h"
-#include "Components/CapsuleComponent.h"
-#include "ConstructorHelpers.h"
-#include "GameFramework/CharacterMovementComponent.h"
-#include "GameFramework/SpringArmComponent.h"
-#include "Camera/CameraComponent.h"
 #include "EngineUtils.h"
 
 

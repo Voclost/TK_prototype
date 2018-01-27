@@ -14,7 +14,33 @@ class TK_PROTOTYPE01_API ATK_prototype01GameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 	
+	UPROPERTY()
+	float gameSpeed;
 	
+	UPROPERTY()
+	int32 gameLevel;
 	
+public:
+	ATK_prototype01GameModeBase();
+
+	void CharScoreUp(unsigned int charScore);
+
+	UFUNCTION()
+	float GetInvGameSpeed();
 	
+	UFUNCTION()
+	float GetGameSpeed();
+	
+	UFUNCTION()
+	int32 GetGameLevel();
+
+
+protected:
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	int32 numCoinsForSpeedIncrease;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float gameSpeedIncrease;
+
 };
