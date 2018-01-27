@@ -17,9 +17,7 @@ class TK_PROTOTYPE01_API ATK_prototype01GameModeBase : public AGameModeBase
 	UPROPERTY()
 	float gameSpeed;
 	
-	UPROPERTY()
-	int32 gameLevel;
-	
+		
 public:
 	ATK_prototype01GameModeBase();
 
@@ -42,5 +40,8 @@ protected:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float gameSpeedIncrease;
+
+	UPROPERTY(BlueprintReadWrite)
+	int32 gameLevel;
 
 };
