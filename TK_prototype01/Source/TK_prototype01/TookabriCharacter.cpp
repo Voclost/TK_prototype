@@ -16,8 +16,8 @@ ATookabriCharacter::ATookabriCharacter()
 	// Set size for collision capsule
 	GetCapsuleComponent()->SetCapsuleSize(42.f, 96.0f);
 	
-	ConstructorHelpers::FObjectFinder<UAnimBlueprint>myAnimBP(TEXT("/Game/Mannequin/Character/Animations/BH_Character_AnimBP.BH_Character_AnimBP"));
-	ConstructorHelpers::FObjectFinder<USkeletalMesh> myMesh(TEXT("/Game/Barrel_Hopper/Character/Mesh/SK_Mannequin.SK_Mannequin"));
+	ConstructorHelpers::FObjectFinder<UAnimBlueprint>myAnimBP(TEXT("/Game/Character/Mannequin/Animations/BH_Character_AnimBP.BH_Character_AnimBP"));
+	ConstructorHelpers::FObjectFinder<USkeletalMesh> myMesh(TEXT("/Game/Character/Mesh/SK_Mannequin.SK_Mannequin"));
 
 	if (myMesh.Succeeded() && myAnimBP.Succeeded())
 	{
