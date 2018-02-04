@@ -16,7 +16,9 @@ ATookabriCharacter::ATookabriCharacter()
 	// Set size for collision capsule
 	GetCapsuleComponent()->SetCapsuleSize(42.f, 96.0f);
 	
-	ConstructorHelpers::FObjectFinder<UAnimBlueprint>myAnimBP(TEXT("/Game/Character/Mannequin/Animations/BH_Character_AnimBP.BH_Character_AnimBP"));
+	
+	ConstructorHelpers::FObjectFinder<UAnimBlueprint>myAnimBP(TEXT("/Game/Character/Tookabri/TK_Animations/TK_Animation_BP.TK_Animation_BP"));
+	//ConstructorHelpers::FObjectFinder<UAnimBlueprint>myAnimBP(TEXT("/Game/Character/Mannequin/Animations/BH_Character_AnimBP.BH_Character_AnimBP"));
 	ConstructorHelpers::FObjectFinder<USkeletalMesh> myMesh(TEXT("/Game/Character/Mesh/SK_Mannequin.SK_Mannequin"));
 
 	if (myMesh.Succeeded() && myAnimBP.Succeeded())
@@ -38,7 +40,7 @@ ATookabriCharacter::ATookabriCharacter()
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	check(CameraBoom);
 
-	CameraBoom->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+	CameraBoom->AttachToComponent(RootComponent, FAttachmentTransformRules::SnapToTargetIncludingScale);
 
 	// The camera follows at this distance behind the character
 	CameraBoom->TargetArmLength = 500.0f;
@@ -51,7 +53,7 @@ ATookabriCharacter::ATookabriCharacter()
 	check(FollowCamera);
 
 	// Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
-	FollowCamera->AttachToComponent(CameraBoom, FAttachmentTransformRules::KeepRelativeTransform, USpringArmComponent::SocketName);
+	FollowCamera->AttachToComponent(CameraBoom, FAttachmentTransformRules::SnapToTargetIncludingScale, USpringArmComponent::SocketName);
 
 	// Rotational change to make the camera look down slightly
 	FollowCamera->RelativeRotation = FRotator(-10.0f, 0.0f, 0.0f);
@@ -63,7 +65,7 @@ ATookabriCharacter::ATookabriCharacter()
 	GetCapsuleComponent()->OnComponentEndOverlap.AddDynamic(this, &ATookabriCharacter::myOnComponentEndOverlap);
 
 	// Poses the input at ID 0 (the default controller)
-	AutoPossessPlayer = EAutoReceiveInput::Player0;
+	//AutoPossessPlayer = EAutoReceiveInput::Player0;
 }
 
 // Called when the game starts or when spawned
